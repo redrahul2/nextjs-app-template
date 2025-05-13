@@ -16,28 +16,28 @@ var _s = __turbopack_context__.k.signature();
 ;
 function DownloadPage() {
     _s();
-    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleDownload = async ()=>{
-        setIsLoading(true);
-        setError('');
+        setLoading(true);
         try {
             const response = await fetch('/api/download');
-            if (!response.ok) throw new Error('Download failed');
+            if (!response.ok) {
+                throw new Error('Failed to download files');
+            }
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'project.zip';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'project-files.zip';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
             window.URL.revokeObjectURL(url);
-        } catch (err) {
-            console.error('Download failed', err);
-            setError('An error occurred while preparing the download.');
+        } catch (error) {
+            console.error('Download error:', error);
+            alert('Failed to download files. Please try again.');
         } finally{
-            setIsLoading(false);
+            setLoading(false);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -50,7 +50,7 @@ function DownloadPage() {
                     children: "Download Project Files"
                 }, void 0, false, {
                     fileName: "[project]/src/app/download/page.tsx",
-                    lineNumber: 36,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -58,82 +58,32 @@ function DownloadPage() {
                     children: "Click the button below to download a ZIP archive of all project files."
                 }, void 0, false, {
                     fileName: "[project]/src/app/download/page.tsx",
-                    lineNumber: 37,
+                    lineNumber: 36,
                     columnNumber: 9
-                }, this),
-                error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-red-50 text-red-500 p-3 rounded-md mb-4 text-center",
-                    children: error
-                }, void 0, false, {
-                    fileName: "[project]/src/app/download/page.tsx",
-                    lineNumber: 41,
-                    columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: handleDownload,
-                    className: "w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg transition-colors",
-                    disabled: isLoading,
-                    children: isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "flex items-center justify-center",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                className: "animate-spin -ml-1 mr-3 h-5 w-5 text-white",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                fill: "none",
-                                viewBox: "0 0 24 24",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                        className: "opacity-25",
-                                        cx: "12",
-                                        cy: "12",
-                                        r: "10",
-                                        stroke: "currentColor",
-                                        strokeWidth: "4"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/download/page.tsx",
-                                        lineNumber: 53,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        className: "opacity-75",
-                                        fill: "currentColor",
-                                        d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/download/page.tsx",
-                                        lineNumber: 54,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/download/page.tsx",
-                                lineNumber: 52,
-                                columnNumber: 15
-                            }, this),
-                            "Preparing Download..."
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/app/download/page.tsx",
-                        lineNumber: 51,
-                        columnNumber: 13
-                    }, this) : 'Download All Files'
+                    disabled: loading,
+                    className: "w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50",
+                    children: loading ? 'Downloading...' : 'Download All Files'
                 }, void 0, false, {
                     fileName: "[project]/src/app/download/page.tsx",
-                    lineNumber: 45,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/download/page.tsx",
-            lineNumber: 35,
+            lineNumber: 34,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/download/page.tsx",
-        lineNumber: 34,
+        lineNumber: 33,
         columnNumber: 5
     }, this);
 }
-_s(DownloadPage, "AxZxtnUzare8ll1Rk4kFSeA5V2Q=");
+_s(DownloadPage, "/Rjh5rPqCCqf0XYnTUk9ZNavw3Q=");
 _c = DownloadPage;
 var _c;
 __turbopack_context__.k.register(_c, "DownloadPage");
